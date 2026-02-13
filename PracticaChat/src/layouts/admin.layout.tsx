@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import { Navigate, Outlet } from "react-router"
 import { useSigninCheck } from "reactfire";
 
@@ -19,7 +20,12 @@ const AdminLayout = () => {
   }
 
   return (
-    <div><Outlet/></div>
+    <div>
+      <Navbar/>
+      <div className="container mx-auto p-4">
+        <Outlet/>
+      </div>
+    </div>
   )
 }
 export default AdminLayout
