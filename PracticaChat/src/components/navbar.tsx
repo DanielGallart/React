@@ -2,6 +2,7 @@ import { useAuthActions } from "@/hooks/use-auth-actions";
 import { LayoutDashboard, MessageCircle, User, LogOut } from "lucide-react"
 import { NavLink } from "react-router";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 const navigation = [
     {name: "Dashboard", href: "/admin/", icon: LayoutDashboard},
@@ -20,7 +21,12 @@ const Navbar = () => {
                         <NavLink
                             key={item.name}
                             to={item.href}
-                            className={"text-gray-700 hover:text-blue-800 flex items-center gap-2"}
+                            className={({isActive}) => (
+                                cn("text-gray-700 hover:text-blue-800 flex items-center gap-2",
+                                    isActive ? "text-blue-800 font-semibold" : "text-gray-700"
+                                )
+                            )}
+                            end
                         >
                             <item.icon className="w-5 h-5"/>
                             {item.name}
@@ -32,7 +38,7 @@ const Navbar = () => {
                     className="ml-auto"
                 >
                     <LogOut className="w-5 h-5"/>
-                    Logout  
+                    Logout
                 </Button>
             </nav>
         </header>

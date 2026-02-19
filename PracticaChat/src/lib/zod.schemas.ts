@@ -18,3 +18,10 @@ export const registerZodSchema = z.object({
 });
 
 export type RegisterZodSchemaType = z.infer<typeof registerZodSchema>;
+
+export const profileZodSchema = z.object({
+    displayName: z.string().min(1, "Display name is required").max(50, "Display name must be less than 50 characters"),
+    photoURL: z.union([z.url("Invalid URL"), z.literal("")]).optional(),
+});
+
+export type ProfileZodSchemaType = z.infer<typeof profileZodSchema>;
