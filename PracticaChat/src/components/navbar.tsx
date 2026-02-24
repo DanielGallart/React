@@ -1,5 +1,5 @@
 import { useAuthActions } from "@/hooks/use-auth-actions";
-import { LayoutDashboard, MessageCircle, User, LogOut } from "lucide-react"
+import { LayoutDashboard, MessageCircle, User, LogOut, ClipboardCheck } from "lucide-react"
 import { NavLink } from "react-router";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ const navigation = [
     {name: "Dashboard", href: "/admin/", icon: LayoutDashboard},
     {name: "Chat", href: "/admin/chat", icon: MessageCircle},
     {name: "Profile", href: "/admin/profile", icon: User},
+    {name: "Tasks", href: "/admin/tasks", icon: ClipboardCheck},
 ]
 
 const Navbar = () => {
