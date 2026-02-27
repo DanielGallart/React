@@ -41,12 +41,30 @@ export const useTaskActions = () => {
         }
         
         return await addDoc(taskCollectionRef, newTask);
+    };
+
+    //DELETE
+    const deleteTask = async (taskId: string) => {
+        const taskDoc = doc(db, "tasks", taskId);
+        return await deleteDoc(taskDoc);
+    }
+
+    //Toggle completed
+    const toggleTaskCompleted = async (taskId: string) => {
+        const task = tasks.find((task) => task.id === taskId);
+        if (!task) {
+            throw new Error("Task not found");
+        }
+        const taskDoc = doc(db, "tasks", taskId);
+        return await updateDoc(taskDoc, { completed: !task.completed });
     }
 
     return {
         tasks: tasks as Task[],
         isLoading: status === "loading",
 
-        createTask
+        createTask,
+        deleteTask,
+        toggleTaskCompleted
     }
 }
