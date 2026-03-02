@@ -33,3 +33,9 @@ export const taskZodSchema = z.object({
 });
 
 export type TaskZodSchemaType = z.infer<typeof taskZodSchema>;
+
+export const messageZodSchema = z.object({
+    text: z.string().trim().min(1, "Message text is required").max(1000, "Message text must be less than 1000 characters"),
+});
+
+export type MessageZodSchemaType = z.infer<typeof messageZodSchema>;
