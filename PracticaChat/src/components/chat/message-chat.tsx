@@ -14,7 +14,7 @@ const MessageChat = ({ message }: Props) => {
 
     return (
         <div className={
-            cn("max-w-[150px] p-2 rounded",
+            cn("max-w-37.5 p-2 rounded",
                 isFriend ? "bg-pink-200": "bg-green-200 ml-auto"
             )
         }>
