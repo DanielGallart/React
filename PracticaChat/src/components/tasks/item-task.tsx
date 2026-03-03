@@ -19,8 +19,7 @@ const ItemTask = ({ task }: Props) => {
             try {
                 await deleteTask(task.id);
             } catch (error) {
-                console.log(error);
-                toast.error("Failed to delete task. Please try again.");
+                toast.error("Failed to delete task. Please try again. " + error);
             }
         });
     }
@@ -30,8 +29,7 @@ const ItemTask = ({ task }: Props) => {
             try {
                 await toggleTaskCompleted(task.id);
             } catch (error) {
-                console.log(error);
-                toast.error("Failed to update task. Please try again.");
+                toast.error("Failed to update task. Please try again. " + error);
             }
         });
     }

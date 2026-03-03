@@ -17,9 +17,8 @@ const CardFooterAuth = ({type, loading}: Props) => {
     const handleLoginWithGoogle = async () => {
     const result = await loginWithGoogle();
     if(result.success) {
-      console.log("Login successfully");
+      toast.success("Login successfully");
     } else {
-        console.error("Login failed:", result.error);
         toast.error(`Login failed: ${result.error?.message || "Unknown error"}`)
     }
   }

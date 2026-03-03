@@ -26,12 +26,10 @@ const FormTask = () => {
                 await createTask(values);
                 form.reset();
                 toast.success("Task created successfully!");
-            } catch (error) {                
-                console.log(error);
-                toast.error("Failed to create task. Please try again.");
+            } catch (error) {
+                toast.error("Failed to create task. Please try again. " + error);
             }
         });
-        console.log(values);
     }
 
     return <Form {...form}>

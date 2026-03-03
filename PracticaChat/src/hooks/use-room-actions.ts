@@ -25,7 +25,7 @@ export const useRoomActions = () => {
         return userDoc.data();
     }
 
-    const findOrCreatRoom = async(friendEmail: string) => {
+    const findOrCreateRoom = async(friendEmail: string) => {
         if(!user) return {
             success: false,
             message: "Error 401. User not authenticated",
@@ -79,6 +79,6 @@ export const useRoomActions = () => {
 
     return {
         rooms: rooms as Room[],
-        findOrCreatRoom
+        findOrCreateRoom
     }
 }

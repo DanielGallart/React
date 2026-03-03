@@ -20,6 +20,7 @@ import { useAuthActions } from "@/hooks/use-auth-actions";
 import { registerZodSchema, type RegisterZodSchemaType } from "@/lib/zod.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const RegisterPage = () => {
   const { register, loading } = useAuthActions();
@@ -37,18 +38,16 @@ const RegisterPage = () => {
   const onSubmit = async (values: RegisterZodSchemaType) => {
     const response = await register(values);
     if (response.error) {
-      console.log(response.error.code);
       if (response.error.code === "auth/email-already-in-use") {
         form.setError("email", {
           type: "manual",
           message: "Email is already in use.",
         });
       } else {
-        console.error("Registration error:", response.error);
+        toast.error("Registration failed. Please try again. " + response.error.message);
       }
     } else {
-      // Handle successful registration, e.g., redirect or show a success message
-      console.log("Registration successful", values);
+      toast.success("Registration successful");
     }
   };
 
