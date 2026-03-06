@@ -1,6 +1,5 @@
 import type { Room } from "@/schemas/room.schema";
 import { useUser } from "reactfire";
-import { Button } from "../ui/button";
 import FriendEmail from "./friend-email";
 import { Suspense } from "react";
 
