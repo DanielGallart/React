@@ -9,17 +9,22 @@ const MessagesChat = ({ roomId }: Props) => {
     const { messages } = useMessagesActions(roomId)
 
     return (
-        <div className="space-y-2">
+        <>
             {
-                messages.map(message => (
-                    <MessageChat 
-                    key={message.id}
-                    message={message}
-                />
-                ))
+                messages.length === 0 ? (
+                    <div className="flex items-center justify-center h-full">
+                        <p className="text-muted-foreground">No messages yet. Start the conversation!</p>
+                    </div>
+                ) : (
+                    messages.map(message => (
+                        <MessageChat 
+                            key={message.id}
+                            message={message}
+                        />
+                    ))
+                )
             }
-            {/* <pre>{JSON.stringify(messages, null, 2)}</pre> */}
-        </div>
+        </>
     )
 }
 export default MessagesChat

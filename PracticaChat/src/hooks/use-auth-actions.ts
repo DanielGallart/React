@@ -86,6 +86,7 @@ export const useAuthActions = () => {
         setLoading(true);
         try {
             await auth.signOut();
+            window.location.href = "/auth/login";
             return {
                 success: true,
                 error: null

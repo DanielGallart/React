@@ -1,12 +1,13 @@
 import { emailFriendZodSchema, type EmailFriendZodSchemaType } from "@/lib/zod.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useTransition } from "react";
 import { useRoomActions } from "@/hooks/use-room-actions";
 import { toast } from "sonner";
+import { Search } from "lucide-react";
 
 interface Props {
     handleClickRoomId: (id: string) => void;
@@ -38,15 +39,19 @@ const FormSearchFriend = ({ handleClickRoomId }: Props) => {
     }
 
     return <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
             <FormField
                 control={form.control}
                 name="email"
                 render={({field}) => (
-                    <FormItem>
-                        <FormLabel>Email of your friend</FormLabel>
+                    <FormItem className="flex-1">
                         <FormControl>
-                            <Input type="email" placeholder="friend@example.com" {...field} />
+                            <Input 
+                                type="email" 
+                                placeholder="Search by email..." 
+                                className="rounded-full px-4 py-2 text-sm"
+                                {...field} 
+                            />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -54,11 +59,12 @@ const FormSearchFriend = ({ handleClickRoomId }: Props) => {
             />
             <Button 
                 type="submit" 
-                variant={"outline"} 
-                className="w-full"
+                variant="ghost"
+                size="icon"
+                className="rounded-full flex-shrink-0"
                 disabled={isLoading}
             >
-                {isLoading ? "Searching..." : "Search Friend"}
+                <Search className="w-5 h-5" />
             </Button>
         </form>
     </Form>
