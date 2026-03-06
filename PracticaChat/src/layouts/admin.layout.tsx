@@ -34,11 +34,11 @@ const AuthenticatedLayout = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col bg-background text-text">
       <Navbar/>
-      <div className="container mx-auto p-4">
+      <main className="flex-1 flex flex-col container mx-auto p-4">
         <Outlet/>
-      </div>
+      </main>
     </div>
   )
 }

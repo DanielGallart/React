@@ -6,7 +6,7 @@ const ListTask = () => {
     
     
     return (
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-4 w-full">
             {tasks.map((task) => (
                 <ItemTask 
                     key={task.id} 

@@ -38,7 +38,7 @@ const FormMessageChat = ({roomId}: Props) => {
     }
 
     return <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2 items-center">
             <FormField
                 control={form.control}
                 name="text"
@@ -47,7 +47,7 @@ const FormMessageChat = ({roomId}: Props) => {
                         <FormControl>
                             <Input 
                                 placeholder="Type a message..." 
-                                className="rounded-full px-4 py-6 text-base border border-input bg-background"
+                                className="rounded-full px-4 py-3 text-base border border-border bg-background focus:border-primary"
                                 {...field} 
                             />
                         </FormControl>
@@ -57,8 +57,8 @@ const FormMessageChat = ({roomId}: Props) => {
             />
             <Button 
                 type="submit" 
-                disabled={isLoading || !form.watch("text").trim()}
-                className="rounded-full aspect-square p-0 w-12 h-12 flex items-center justify-center flex-shrink-0"
+                disabled={isLoading || !(form.watch("text") || "").trim()}
+                className="rounded-full aspect-square p-0 w-12 h-12 flex items-center justify-center shrink-0 bg-primary text-surface hover:bg-accent transition"
             >
                 <Send className="w-5 h-5" />
             </Button>

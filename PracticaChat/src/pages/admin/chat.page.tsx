@@ -17,12 +17,13 @@ const ChatPage = () => {
   });
 
   return (
-    <div className="h-[calc(100vh_-_120px)] flex flex-col md:flex-row gap-0 md:gap-px bg-background overflow-hidden">
+    <div className="h-[calc(100vh-120px)] flex flex-col md:flex-row bg-background overflow-hidden">
       {/* Sidebar - Conversations List */}
-      <aside className="w-full md:w-80 flex flex-col border-r border-border bg-card">
+      <aside className="w-full md:w-80 flex flex-col border-r border-border bg-surface shadow-md">
         {/* Header */}
-        <div className="p-4 border-b border-border">
-          <h1 className="text-2xl font-bold text-foreground">Messages</h1>
+        <div className="p-4 border-b border-border flex items-center gap-2">
+          <span className="text-primary text-xl font-bold">💬</span>
+          <h1 className="text-2xl font-bold text-primary">Messages</h1>
         </div>
 
         {/* Search Section */}
@@ -46,7 +47,7 @@ const ChatPage = () => {
           roomId ? (
             <>
               {/* Messages Container */}
-              <div className="flex-1 overflow-y-auto flex flex-col p-4 md:p-6 gap-3">
+              <div className="flex-1 overflow-y-auto flex flex-col p-4 md:p-6 gap-3 bg-background">
                 <Suspense fallback={<div className="text-center text-muted-foreground">Loading messages...</div>}>
                   <MessagesChat roomId={roomId}/>
                 </Suspense>
@@ -54,16 +55,16 @@ const ChatPage = () => {
               </div>
 
               {/* Message Input */}
-              <div className="border-t border-border p-4 md:p-6 bg-card flex-shrink-0">
+              <div className="border-t border-border p-4 md:p-6 bg-surface shrink-0 shadow-inner">
                 <Suspense fallback={<div className="text-sm text-muted-foreground">Loading...</div>}>
                   <FormMessageChat roomId={roomId}/>
                 </Suspense>
               </div>
             </>
           ) : (
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex-1 flex items-center justify-center bg-background">
               <div className="text-center">
-                <p className="text-lg font-semibold text-foreground mb-2">No conversation selected</p>
+                <p className="text-lg font-semibold text-primary mb-2">No conversation selected</p>
                 <p className="text-muted-foreground">Select a conversation or start a new one to begin chatting</p>
               </div>
             </div>

@@ -116,12 +116,12 @@
 
 @layer base {
   html {
-    @apply overflow-hidden;
+    /* allow page scrolling so long lists are visible */
   }
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground overflow-hidden;
+    @apply bg-background text-foreground;
   }
 }

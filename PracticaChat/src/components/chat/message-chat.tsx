@@ -14,25 +14,24 @@ const MessageChat = ({ message }: Props) => {
 
     return (
         <div className={cn(
-            "flex gap-2 items-end max-w-md",
+            "flex gap-2 items-end max-w-lg",
             isFriend ? "justify-start" : "justify-end ml-auto"
         )}>
             {isFriend && (
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
-                    ?
+                <div className="w-8 h-8 rounded-full bg-linear-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-semibold shrink-0">
+                    <span>👤</span>
                 </div>
             )}
-            
             <div className={cn(
-                "rounded-2xl px-4 py-2 break-words shadow-sm",
+                "rounded-2xl px-4 py-2 wrap-break-word shadow-md",
                 isFriend 
-                    ? "bg-muted text-foreground rounded-bl-none" 
-                    : "bg-blue-500 text-white rounded-br-none"
+                    ? "bg-muted text-text rounded-bl-none" 
+                    : "bg-primary text-surface rounded-br-none"
             )}>
-                <p className="text-sm font-medium">{message.text}</p>
+                <p className="text-base font-medium">{message.text}</p>
                 <p className={cn(
                     "text-xs mt-1 opacity-70",
-                    isFriend ? "text-muted-foreground" : "text-blue-100"
+                    isFriend ? "text-muted-foreground" : "text-surface"
                 )}>
                     {
                         isFriend ? (
@@ -43,10 +42,9 @@ const MessageChat = ({ message }: Props) => {
                     }
                 </p>
             </div>
-
             {!isFriend && (
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
-                    Y
+                <div className="w-8 h-8 rounded-full bg-linear-to-br from-accent to-primary flex items-center justify-center text-white text-xs font-semibold shrink-0">
+                    <span>🧑</span>
                 </div>
             )}
         </div>

@@ -34,16 +34,18 @@ const FormProfile = ({user}: Props) => {
         <Form {...form}>
             <form 
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
+                className="space-y-6 w-full"
             >
                 <FormField
                     control={form.control}
                     name="displayName"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>User Name</FormLabel>
+                            <FormLabel className="flex items-center gap-2 text-primary font-semibold">
+                                <span>👤</span> User Name
+                            </FormLabel>
                             <FormControl>
-                                <Input placeholder="User Name" {...field} />
+                                <Input placeholder="User Name" {...field} className="bg-background border border-border rounded-md px-3 py-2 focus:border-primary" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -54,15 +56,17 @@ const FormProfile = ({user}: Props) => {
                     name="photoURL"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Photo URL</FormLabel>
+                            <FormLabel className="flex items-center gap-2 text-accent font-semibold">
+                                <span>🖼️</span> Photo URL
+                            </FormLabel>
                             <FormControl>
-                                <Input placeholder="Photo URL" {...field} />
+                                <Input placeholder="Photo URL" {...field} className="bg-background border border-border rounded-md px-3 py-2 focus:border-accent" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button type="submit" disabled={loading}>
+                <Button type="submit" disabled={loading} className="w-full bg-primary text-surface font-semibold py-2 rounded-md hover:bg-accent transition">
                     {loading ? "Updating..." : "Update Profile"}
                 </Button>
             </form>

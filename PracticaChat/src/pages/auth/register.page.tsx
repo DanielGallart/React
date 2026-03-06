@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { User, Mail, Lock, KeyRound } from "lucide-react";
 import { useAuthActions } from "@/hooks/use-auth-actions";
 import { registerZodSchema, type RegisterZodSchemaType } from "@/lib/zod.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -52,27 +53,33 @@ const RegisterPage = () => {
   };
 
   return (
-    <Card className="bg-white">
-      <CardHeader>
-        <CardTitle>Register</CardTitle>
-        <CardDescription>Create a new account</CardDescription>
+    <Card className="bg-surface shadow-lg rounded-lg max-w-md mx-auto w-full">
+      <CardHeader className="flex flex-col items-center gap-2">
+        <div className="bg-primary p-3 rounded-full mb-2">
+          <User className="text-surface w-6 h-6" />
+        </div>
+        <CardTitle className="text-primary text-2xl font-bold">Register</CardTitle>
+        <CardDescription className="text-muted-foreground font-medium">Create a new account</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
+            className="space-y-6"
           >
             <FormField
               control={form.control}
               name="displayName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Display Name</FormLabel>
+                  <FormLabel className="flex items-center gap-2 text-text font-semibold">
+                    <User className="w-4 h-4 text-primary" /> Display Name
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       placeholder="Enter your display name"
+                      className="bg-background border border-border rounded-md px-3 py-2 focus:border-primary text-text"
                     />
                   </FormControl>
                   <FormMessage />
@@ -84,11 +91,14 @@ const RegisterPage = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className="flex items-center gap-2 text-text font-semibold">
+                    <Mail className="w-4 h-4 text-primary" /> Email
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       placeholder="Enter your email"
+                      className="bg-background border border-border rounded-md px-3 py-2 focus:border-primary text-text"
                     />
                   </FormControl>
                   <FormMessage />
@@ -100,12 +110,15 @@ const RegisterPage = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="flex items-center gap-2 text-text font-semibold">
+                    <Lock className="w-4 h-4 text-primary" /> Password
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       {...field}
                       placeholder="Enter your password"
+                      className="bg-background border border-border rounded-md px-3 py-2 focus:border-primary text-text"
                     />
                   </FormControl>
                   <FormMessage />
@@ -117,12 +130,15 @@ const RegisterPage = () => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
+                  <FormLabel className="flex items-center gap-2 text-text font-semibold">
+                    <KeyRound className="w-4 h-4 text-primary" /> Confirm Password
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       {...field}
                       placeholder="Confirm your password"
+                      className="bg-background border border-border rounded-md px-3 py-2 focus:border-primary text-text"
                     />
                   </FormControl>
                   <FormMessage />
@@ -131,7 +147,7 @@ const RegisterPage = () => {
             />
             <Button
               type="submit"
-              className="w-full"
+              className="w-full bg-primary text-surface font-semibold py-2 rounded-md hover:bg-secondary transition"
               disabled={loading}
             >
               Register

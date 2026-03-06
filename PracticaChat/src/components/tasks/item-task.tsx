@@ -1,6 +1,6 @@
 import { useTaskActions } from "@/hooks/use-task-actions";
 import type { Task } from "@/schemas/task.schema";
-import { Card, CardTitle, CardHeader, CardAction, CardContent } from "../ui/card";
+import { Card, CardTitle, CardHeader, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import { useTransition } from "react";
 import { toast } from "sonner";
@@ -35,23 +35,33 @@ const ItemTask = ({ task }: Props) => {
     }
 
     return (
-        <Card>
+        <Card className="bg-background border border-border shadow-md w-full">
             <CardHeader>
-                <CardTitle className={cn("text-lg font-semibold",
-                    task.completed ? "line-through text-gray-500" : ""
-                )}>{task.title}</CardTitle>
-                <CardAction className="space-x-2">
-                    <Button variant={"outline"} onClick={handleToggleCompleted} disabled={isPending}>Update</Button>
-                    <Button variant={"destructive"} onClick={handleDelete} disabled={isPending}>Delete</Button>
-                </CardAction>
-                {
-                    task.description && (
-                        <CardContent>
-                            {task.description}
-                        </CardContent>
-                    )
-                }
+                <div className="w-full flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                    <CardTitle className={cn("text-lg font-semibold flex items-center gap-2 wrap-break-word",
+                        task.completed ? "line-through text-muted-foreground" : "text-primary"
+                    )}>
+                        <span>{task.completed ? "✅" : "📝"}</span> {task.title}
+                    </CardTitle>
+
+                    <div className="flex items-center gap-2 flex-wrap justify-end">
+                        <Button variant={"outline"} onClick={handleToggleCompleted} disabled={isPending} size="sm" className="whitespace-normal">
+                            {task.completed ? "Mark as Pending" : "Mark as Done"}
+                        </Button>
+                        <Button variant={"destructive"} onClick={handleDelete} disabled={isPending} size="sm" className="whitespace-normal">
+                            🗑️ Delete
+                        </Button>
+                    </div>
+                </div>
             </CardHeader>
+
+            {
+                task.description && (
+                    <CardContent className="text-muted-foreground mt-0 px-6 pt-2 wrap-break-word">
+                        {task.description}
+                    </CardContent>
+                )
+            }
         </Card>
     )
 }

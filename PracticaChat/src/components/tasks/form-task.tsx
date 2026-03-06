@@ -33,15 +33,17 @@ const FormTask = () => {
     }
 
     return <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full">
             <FormField 
                 control={form.control}
                 name="title"
                 render = {({field}) => (
                     <FormItem>
-                        <FormLabel>Title</FormLabel>
+                        <FormLabel className="flex items-center gap-2 text-primary font-semibold">
+                            <span>📝</span> Title
+                        </FormLabel>
                         <FormControl>
-                            <Input placeholder="Task title" {...field}/>
+                            <Input placeholder="Task title" {...field} className="bg-background border border-border rounded-md px-3 py-2 focus:border-primary"/>
                         </FormControl>
                         <FormMessage/>
                     </FormItem>
@@ -52,15 +54,17 @@ const FormTask = () => {
                 name="description"
                 render = {({field}) => (
                     <FormItem>
-                        <FormLabel>Description</FormLabel>
+                        <FormLabel className="flex items-center gap-2 text-accent font-semibold">
+                            <span>✏️</span> Description
+                        </FormLabel>
                         <FormControl>
-                            <Input placeholder="Task description" {...field}/>
+                            <Input placeholder="Task description" {...field} className="bg-background border border-border rounded-md px-3 py-2 focus:border-accent"/>
                         </FormControl>
                         <FormMessage/>
                     </FormItem>
                 )}
             />
-            <Button type="submit" disabled={isPending}>Create Task</Button>
+            <Button type="submit" disabled={isPending} className="w-full bg-primary text-surface font-semibold py-2 rounded-md hover:bg-accent transition">Create Task</Button>
         </form>
     </Form>
 }

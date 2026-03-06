@@ -6,6 +6,7 @@ import { FirebaseAppProvider } from 'reactfire'
 import { firebaseConfig } from './config/firebase.ts'
 import FirebaseServices from './config/firebase-services.tsx'
 import { BrowserRouter } from 'react-router'
+import { applyPalette } from './config/palette'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -20,3 +21,6 @@ createRoot(document.getElementById('root')!).render(
     </FirebaseAppProvider>
   </StrictMode>,
 )
+
+// Apply color palette CSS variables (from palette.json)
+applyPalette()
